@@ -1,7 +1,6 @@
-// main.h
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef _PUTCHAR_H
+#define _PUTCHAR_H
 
 int _putchar(char c);
 
-#endif /* MAIN_H */
+#endif 
