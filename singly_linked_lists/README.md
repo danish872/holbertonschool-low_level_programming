@@ -1,1 +1,0 @@
-README of linked list 
