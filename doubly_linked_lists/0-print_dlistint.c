@@ -1,4 +1,4 @@
-#include "main.h"
+#include "lists.h"
 
 /**
  * print_dlistint - Print all the values of each node in a `dlistint_t` list
