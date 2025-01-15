@@ -1,5 +1,5 @@
-#include "main.h"
-#define BUF_SIZE 
+#include"main.h"
+#define BUF_SIZE
 /**
  * main - main
  * @argc: number of arguments
