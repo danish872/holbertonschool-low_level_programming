@@ -13,9 +13,9 @@ void _printfloat(va_list list);
 void _printint(va_list list);
 
 /**
-* struct checker - Structure to validate and process variadic arguments.
-* @type: A character representing the expected data type (e.g., 'i' for int, 'f' for float, etc.).
-* @func: A function pointer to handle or print the corresponding argument type.
+* struct checker - Structure to validateand process variadic arguments.
+* @type: A character representing the expected data type
+* @func: A function pointer to handle or the argument type.
 */
 
 typedef struct checker
