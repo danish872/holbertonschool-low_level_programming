@@ -15,7 +15,7 @@ void _printint(va_list list);
 /**
 * struct checker - Structure to validateand process variadic arguments.
 * @type: A character representing the expected data type
-* @func: A function pointer to handle or the argument type.
+* @f: Function pointer to handle the type.
 */
 
 typedef struct checker
