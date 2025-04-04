@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 void cant_write(char *s);
 void cant_read(char *s);
 /**
