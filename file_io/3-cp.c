@@ -30,7 +30,9 @@ int main(int argc, char *argv[])
 	/* Ouvrir le fichier source pour lecture */
 	fd1 = open(argv[1], O_RDONLY);
 	if (fd1 == -1)
-		cant_read(argv[1]);
+	{
+		cant_read(argv[1]);  /* Renvoie le code 98 si la lecture échoue */
+	}
 
 	/* Ouvrir le fichier de destination pour écriture */
 	fd2 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
@@ -52,12 +54,12 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	/* Vérifier s'il y a eu une erreur de lecture */
+	/* Vérifier si l'échec de lecture survient après l'ouverture du fichier */
 	if (rd == -1)
 	{
 		close(fd1);
 		close(fd2);
-		cant_read(argv[1]);
+		cant_read(argv[1]);  /* Renvoie 98 si la lecture échoue après ouverture */
 	}
 
 	/* Fermer les fichiers */
@@ -82,7 +84,7 @@ int main(int argc, char *argv[])
 void cant_read(char *s)
 {
 	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", s);
-	exit(98);  /* Renvoie le code de sortie 98 pour une erreur de lecture */
+	exit(98);  /* Renvoie 98 pour une erreur de lecture */
 }
 
 /**
@@ -92,6 +94,6 @@ void cant_read(char *s)
 void cant_write(char *s)
 {
 	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", s);
-	exit(99);  /* Renvoie le code de sortie 99 pour une erreur d'écriture */
+	exit(99);  /* Renvoie 99 pour une erreur d'écriture */
 }
 
