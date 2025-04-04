@@ -27,10 +27,12 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 
+	/* Ouvrir le fichier source pour lecture */
 	fd1 = open(argv[1], O_RDONLY);
 	if (fd1 == -1)
 		cant_read(argv[1]);
 
+	/* Ouvrir le fichier de destination pour écriture */
 	fd2 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd2 == -1)
 	{
@@ -38,6 +40,7 @@ int main(int argc, char *argv[])
 		cant_write(argv[2]);
 	}
 
+	/* Lire et copier les données du fichier source */
 	while ((rd = read(fd1, buff, 1024)) > 0)
 	{
 		wr = write(fd2, buff, rd);
@@ -48,6 +51,8 @@ int main(int argc, char *argv[])
 			cant_write(argv[2]);
 		}
 	}
+
+	/* Vérifier s'il y a eu une erreur de lecture */
 	if (rd == -1)
 	{
 		close(fd1);
@@ -55,6 +60,7 @@ int main(int argc, char *argv[])
 		cant_read(argv[1]);
 	}
 
+	/* Fermer les fichiers */
 	if (close(fd1) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1);
@@ -76,7 +82,7 @@ int main(int argc, char *argv[])
 void cant_read(char *s)
 {
 	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", s);
-	exit(98);
+	exit(98);  /* Renvoie le code de sortie 98 pour une erreur de lecture */
 }
 
 /**
@@ -86,6 +92,6 @@ void cant_read(char *s)
 void cant_write(char *s)
 {
 	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", s);
-	exit(99);
+	exit(99);  /* Renvoie le code de sortie 99 pour une erreur d'écriture */
 }
 
